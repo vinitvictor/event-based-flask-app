@@ -6,6 +6,7 @@ Use an event-driven architecture to read a text file and store it in a document 
   - Python Flask framework to build the web app.
   - Serverless framework to deploy the project.
   - Swagger for API documentation
+  - Unit test cases
 
 
 ## AWS Services  
@@ -75,8 +76,15 @@ Please do the inital setup for serverless - https://www.serverless.com/framework
    3. use following command to deploy
     
      $ sls deploy
-   
+  
   Note - Server deployed links are attached in mail.
-    
+
+## Unit Test
+  - Used unittest package to write unit test cases.
+  - Unit test cases are added in test_app.py
+  - Use following command to run test cases
+  ```
+    python test_app.py
+  ```
 
     
