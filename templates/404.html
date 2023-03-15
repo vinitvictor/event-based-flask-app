@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .container {
+            margin: 0 auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 5em;
+            margin-top: 0;
+            margin-bottom: 0.5em;
+        }
+        p {
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 2em;
+        }
+        a {
+            color: #e51937;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <p>Oops, the page you're looking for doesn't exist.</p>
+        <button class="return-button" type="button" onclick="window.location.href='{{ url_for( 'main') }}';">Return Home</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Here is your link</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <h1>Here is your link</h1>
+    <div class="return-button-container">
+      <button class="return-button" type="button" onclick="window.location.href='{{ url_for( 'main') }}';">Return Home</button>
+    </div>
+    <p>Hey,</p>
+    <p>As requested, here is the link to {{file_name}}:</p>
+    <p><a href={{file_link}}>[Resource Link]</a></p>
+    <p>Thank you,</p>
+    <p>Vinit Bhosale</p>
+</body>
+</html>

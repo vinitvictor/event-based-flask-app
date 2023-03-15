@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All Files View</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+	<h1>Uploaded Files</h1>
+	<!-- change action to '/upload' when running locally -->
+	<form id="file-upload-form" action="/dev/upload" method="POST" enctype="multipart/form-data">
+	      <div class="upload">
+	        <label for="file" class="upload-label">Select a file:</label>
+	        <input type="file" id="file" name="file" class="upload-input">
+	        <button type="submit" class="green-btn">Upload</button>
+	      </div>
+  </form>
+
+
+
+	<!-- <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form> -->
+	<table>
+		<tr>
+			<th>id</th>
+			<th>File Name</th>
+			<th>View</th>
+			<th>View Raw Data</th>
+			<th>Download Csv</th>
+		</tr>
+		{% for item in rows %}
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ item["file_name"] }}</td>
+			<td><button class="btn btn-primary green-btn" type="button" onclick="window.location.href='{{ url_for( 'get_items' , key=item.file_name ) }}';" >View Data in Tabular Format</button></td>
+			<td><button class="btn btn-primary green-btn" type="button" onclick="window.location.href='{{ url_for( 'get_raw_data' , key=item.file_name ) }}';" >View Raw Data</button></td>
+			<td><button class="btn btn-primary green-btn" type="button" onclick="window.location.href='{{ url_for( 'get_csv' , key=item.file_name ) }}';">Download</button></td>
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+<script>
+      const form = document.getElementById("file-upload-form");
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        try {
+					// <!-- change action to '/upload' when running locally -->
+          const response = await fetch("/dev/upload", { method: "POST", body: formData });
+          const data = await response.json();
+          alert(data.message);
+					window.location.reload();
+        } catch (error) {
+          console.error(error);
+          alert("An error occurred while uploading the file.");
+        }
+      });
+  </script>
+</html>
